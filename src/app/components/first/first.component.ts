@@ -8,8 +8,14 @@ import { Component } from '@angular/core';
   styleUrl: './first.component.css'
 })
 export class FirstComponent {
+  /**
+   * Elle définit si l element est affiché ou pas
+   */
   isHidden = false;
 
+  /**
+   * Je cache ou j'affiche l'element
+   */
   showHide() {
     this.isHidden = !this.isHidden
   }
