@@ -5,5 +5,7 @@ import { ModuleExempleComponent } from "./module-exemple/module-exemple.componen
   declarations: [ModuleExempleComponent],
   imports: [],
   exports: [ModuleExempleComponent],
+  bootstrap: [],
+  providers: [],
 })
 export class TestModule {}
