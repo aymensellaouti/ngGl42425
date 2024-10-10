@@ -11,11 +11,14 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { WeekTodoComponent } from './todo/week-todo/week-todo.component';
 import { appNameDependencyInjectionToken } from './dependency injection tokens/app-name.token';
 import { loggerDependencyInjectionToken } from './dependency injection tokens/logger.token';
+import { NavbarComponent } from "./components/navbar/navbar.component";
+import { TestFormComponent } from './form/test-form/test-form.component';
+import { TestObservableComponent } from "./rxjs/test-observable/test-observable.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TodoComponent, WeekTodoComponent, FirstComponent],
+  imports: [RouterOutlet, NavbarComponent, TestFormComponent, TestObservableComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

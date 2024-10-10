@@ -1,0 +1,14 @@
+<p>test-form works!</p>
+
+<form #myForm="ngForm">
+  <input #nameInput="ngModel" required  type="text" class="form-control" ngModel name="name">
+  @if (nameInput.invalid && nameInput.touched) {
+    <div class="alert alert-danger">
+      Le nom est obligatoire
+    </div>
+  }
+  <input required minlength="4" type="text" class="form-control" ngModel name="age">
+  <button [disabled]="myForm.invalid" (click)="process(myForm)" class="btn btn-primary">
+    process
+  </button>
+</form>
