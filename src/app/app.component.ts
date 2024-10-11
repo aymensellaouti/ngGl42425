@@ -14,11 +14,13 @@ import { loggerDependencyInjectionToken } from './dependency injection tokens/lo
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { TestFormComponent } from './form/test-form/test-form.component';
 import { TestObservableComponent } from "./rxjs/test-observable/test-observable.component";
+import { ToastrService } from 'ngx-toastr';
+import { CvComponent } from "./cv/cv/cv.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, TestFormComponent, TestObservableComponent],
+  imports: [RouterOutlet, NavbarComponent, TestFormComponent, TestObservableComponent, CvComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -26,6 +28,7 @@ export class AppComponent {
   title = 'ngGl42425';
   appName = inject(appNameDependencyInjectionToken);
   loggers = inject(loggerDependencyInjectionToken);
+  toastr = inject(ToastrService);
   constructor(
     public loggerService: LoggerService,
     public sayHelloService: SayHelloService
@@ -33,6 +36,7 @@ export class AppComponent {
     this.loggerService.logger('cc GL4');
     this.sayHelloService.hello();
     this.loggers.forEach(logger => logger.logger('cc GL4'));
+    this.toastr.info('Hello GL4')
     // setTimeout(() => {
     //   this.title = 'GL4 FA9at'
     // }, 3000);

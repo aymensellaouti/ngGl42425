@@ -7,26 +7,29 @@ import { SayHelloService } from './services/say-hello.service';
 import { appNameDependencyInjectionToken } from './dependency injection tokens/app-name.token';
 import { loggerDependencyInjectionToken } from './dependency injection tokens/logger.token';
 import { Logger2Service } from './services/logger2.services';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    // provideAnimations(),
+    provideToastr(),
     // Rahou fama chkoun iest7a9 el provider hatha
     // asn3ou
     LoggerService,
     {
       provide: loggerDependencyInjectionToken,
       useClass: LoggerService,
-      multi: true
+      multi: true,
     },
     {
       provide: loggerDependencyInjectionToken,
       useClass: Logger2Service,
-      multi: true
+      multi: true,
     },
     {
       provide: appNameDependencyInjectionToken,
-      useValue: 'ngGL4'
+      useValue: 'ngGL4',
     },
     // {
     //   provide: LoggerService,
