@@ -14,63 +14,17 @@ import { distinctUntilChanged, filter } from 'rxjs';
   imports: [CvListComponent, CvCardComponent, AsyncPipe]
 })
 export class CvComponent {
+  cvService = inject(CvService);
   // Je suis le smart component je suis le boss je réfléchi
   // Je dois tout d'abord fournir la liste des cvs
   /**
    * La liste des cvs à afficher
    */
-  cvs: Cv[] = [
-    new Cv(
-      1,
-      'sellaouti',
-      'aymen',
-      'teacher',
-      'as.jpg',
-      '1234',
-      42
-    ),
-    new Cv(
-      2,
-      'Lharras',
-      'Yousra',
-      'Dev',
-      'rotating_card_profile.png',
-      '12345',
-      20
-    ),
-    new Cv(
-      3,
-      'Sainnier',
-      'Sylvain',
-      'Dev',
-      'rotating_card_profile3.png',
-      '123456',
-      22
-    ),
-    new Cv(
-      4,
-      'Fouhety',
-      'Kevin',
-      'Dev',
-      'rotating_card_profile2.png',
-      '123456',
-      22
-    ),
-    new Cv(
-      5,
-      'Medmad',
-      'Safae',
-      'Dev',
-      'rotating_card_profile.png',
-      '123456',
-      22
-    ),
-  ];
+  cvs: Cv[] = this.cvService.getCvs();
 
   /**
    * Le cv sélectionné
    */
-  cvService = inject(CvService);
   selectedCv$ = this.cvService.
   selectedCv$.pipe(
     // selectedCv

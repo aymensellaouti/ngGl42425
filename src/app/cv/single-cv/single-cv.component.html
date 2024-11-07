@@ -1,0 +1,11 @@
+<p>single-cv works!</p>
+
+@if (cv(); as cv) {
+  <app-cv-item [cv]="cv"/>
+  <button class="btn btn-danger">
+    <i class="bi bi-caret-left" [routerLink]="['/cv',cv.id - 1]"></i>
+  </button>
+  <button class="btn btn-success">
+    <i class="bi bi-caret-right" [routerLink]="['/cv',cv.id + 1]"></i>
+  </button>
+}

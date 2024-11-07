@@ -4,6 +4,8 @@ import { TodoComponent } from './todo/todo/todo.component';
 import { APP_ROUTES } from './config/app-routes.config';
 import { SommeComponent } from './components/somme/somme.component';
 import { TwoWayComponent } from './components/two-way/two-way.component';
+import { SingleCvComponent } from './cv/single-cv/single-cv.component';
+import { CvComponent } from './cv/cv/cv.component';
 
 export const routes: Routes = [
   {
@@ -17,9 +19,16 @@ export const routes: Routes = [
   {
     path: APP_ROUTES.somme,
     component: SommeComponent,
+  },{
+    path: APP_ROUTES.somme,
+    component: SommeComponent,
   },
   {
-    path: ':haja',
-    component: TwoWayComponent,
+    path: 'cv',
+    component: CvComponent,
+  },
+  {
+    path: 'cv/:id',
+    component: SingleCvComponent,
   },
 ];
