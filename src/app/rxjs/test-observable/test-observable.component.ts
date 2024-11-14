@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-test-observable',
@@ -9,8 +9,9 @@ import { filter, map, Observable } from 'rxjs';
   templateUrl: './test-observable.component.html',
   styleUrl: './test-observable.component.css',
 })
-export class TestObservableComponent {
+export class TestObservableComponent implements OnDestroy{
   toast = inject(ToastrService);
+  subscription = new Subscription();
   observable$ = new Observable<number>((observer) => {
     let i = 5;
     const intervalIndex = setInterval(() => {
@@ -23,11 +24,11 @@ export class TestObservableComponent {
   });
 
   constructor() {
-    this.observable$.subscribe((val) => {
+    this.subscription.add(this.observable$.subscribe((val) => {
       console.log(val);
-    });
+    }));
     // setTimeout(() => {
-      this.observable$
+     this.subscription.add( this.observable$
       // 5 4 3 2 1
       .pipe(
         map( x => x * 3),
@@ -38,7 +39,10 @@ export class TestObservableComponent {
       // flux resultat
       .subscribe((val) => {
         this.toast.info('' + val)
-      });
+      }));
     // }, 3000);
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

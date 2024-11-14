@@ -17,10 +17,9 @@ export class SingleCvComponent {
   cvService = inject(CvService);
   router = inject(Router);
   constructor() {
-    const id = this.acr.snapshot.params['id'];
-    this.cv.set(this.cvService.findCvById(id));
-    if (!this.cv()) {
-      this.router.navigate(['cv']);
-    }
+    this.acr.params.subscribe({
+      next: (params) => this.cv.set(this.cvService.findCvById(params['id'])),
+      error: (e) => this.router.navigate(['cv']),
+    });
   }
 }
